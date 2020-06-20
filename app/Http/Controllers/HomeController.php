@@ -41,4 +41,9 @@ class HomeController extends Controller
     {
         echo "This is new Chanel brance";
     }
+
+    public function CC()
+    {
+        
+    }
 }
