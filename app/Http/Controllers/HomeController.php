@@ -26,4 +26,9 @@ class HomeController extends Controller
     {
         return Auth::guard("admin-api")->user();
     }
+
+    public function showHome()
+    {
+       echo "home";
+    }
 }
