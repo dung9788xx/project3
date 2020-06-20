@@ -36,4 +36,9 @@ class HomeController extends Controller
     {
         echo "news";
     }
+
+    public function chanel()
+    {
+        echo "This is new Chanel brance";
+    }
 }
