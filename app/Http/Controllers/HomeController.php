@@ -44,6 +44,6 @@ class HomeController extends Controller
 
     public function CC()
     {
-        
+        echo  "This is cc";
     }
 }
