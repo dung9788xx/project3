@@ -31,4 +31,9 @@ class HomeController extends Controller
     {
        echo "home";
     }
+
+    public function showNews()
+    {
+        echo "news";
+    }
 }
