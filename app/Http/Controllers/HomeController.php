@@ -27,23 +27,4 @@ class HomeController extends Controller
         return Auth::guard("admin-api")->user();
     }
 
-    public function showHome()
-    {
-       echo "home";
-    }
-
-    public function showNews()
-    {
-        echo "news";
-    }
-
-    public function chanel()
-    {
-        echo "This is new Chanel brance";
-    }
-
-    public function CC()
-    {
-        echo  "This is change cc";
-    }
 }
