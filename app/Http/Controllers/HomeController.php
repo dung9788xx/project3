@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware("auth:admin-api");
+        $this->middleware("auth:admin");
     }
 
     /**
@@ -24,12 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return Auth::guard("admin-api")->user();
-    }
-
-    public function showHome()
-    {
-       echo "home";
+        return view("home");
     }
 
     public function showNews()
@@ -37,13 +32,4 @@ class HomeController extends Controller
         echo "news";
     }
 
-    public function chanel()
-    {
-        echo "This is new Chanel brance";
-    }
-
-    public function CC()
-    {
-        echo  "This is change cc";
-    }
 }

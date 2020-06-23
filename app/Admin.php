@@ -9,7 +9,7 @@ use Laravel\Passport\HasApiTokens;
 
 class Admin extends Authenticatable
 {
-    protected $guarded="admin-api";
+    protected $guarded="admin";
     use Notifiable, HasApiTokens;
 
     /**

@@ -13,6 +13,35 @@ use Illuminate\Support\Facades\Validator;
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
+    public function usersLogin(Request $request)
+    {
+        $params=$this->getParams($request);
+        $validator=Validator::make($params,$this->rules());
+        if($validator->fails()){
+            return response()->json([
+                "code"=>422,
+                "message"=>$validator->errors()->first()
+            ]);
+        }
+        $credential=[
+            "email"=>$params["email"],
+            "password"=>$params["password"]
+        ];
+        if(Auth::guard("user")->attempt($credential)){
+            $user=Auth::guard("user")->user();
+            $token=$user->createToken("Login token")->accessToken;
+            return response()->json([
+                "code"=>200,
+                "message"=>"Login success",
+                "accessToken"=>$token
+            ],200);
+        }else{
+            return response()->json([
+                "code"=>402,
+                "message"=>"Check email password"
+            ],403);
+        }
+    }
     public function login(Request $request)
     {
         $params=$this->getParams($request);
@@ -27,9 +56,8 @@ class LoginController extends Controller
             "email"=>$params["email"],
             "password"=>$params["password"]
         ];
-        DB::connection()->enableQueryLog();
-        if(Auth::guard("admin-api")->attempt($credential)){
-            $user=Auth::guard("admin-api")->user();
+        if(Auth::guard("admin")->attempt($credential)){
+            $user=Auth::guard("admin")->user();
             $token=$user->createToken("Login token")->accessToken;
             return response()->json([
                 "code"=>200,
@@ -37,7 +65,6 @@ class LoginController extends Controller
                 "accessToken"=>$token
             ],200);
         }else{
-
             return response()->json([
                 "code"=>402,
                 "message"=>"Check email password"
@@ -60,8 +87,5 @@ class LoginController extends Controller
         ];
     }
 
-    public function cc()
-    {
-        dd(Auth::guard("admin-api")->user());
-    }
+
 }
