@@ -21,4 +21,9 @@ class HomeController extends Controller
         echo "new";
     }
 
+    public function addNews()
+    {
+        
+    }
+
 }
