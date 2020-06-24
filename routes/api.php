@@ -24,3 +24,4 @@ Route::namespace("Api")->group(function (){
     Route::post('admins/signin', "LoginController@login");
 });
 Route::get("/abc",function(){return "abc";});
+//add code comment
