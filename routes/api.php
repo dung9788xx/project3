@@ -23,3 +23,4 @@ Route::namespace("Api")->group(function (){
    Route::post('users/signin', "LoginController@usersLogin");
     Route::post('admins/signin', "LoginController@login");
 });
+Route::get("/abc",function(){return "abc";});
